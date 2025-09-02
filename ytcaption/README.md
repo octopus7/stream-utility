@@ -1,50 +1,50 @@
 # YT Caption Utility (WPF)
 
-한 줄로 요약: 항상 위에 떠 있는 투명 오버레이에 텍스트를 표시하고, 좌측 빈영역 클릭으로 설정/편집/리사이즈를 제어하는 WPF 유틸리티.
+한 줄로 요약: 항상 위에 떠 있는 투명 오버레이에 텍스트를 표시하고, 좌측 빈영역 클릭으로 조정/편집/리사이즈를 제어하는 WPF 유틸리티.
 
-One‑liner: A WPF utility that shows text on a topmost transparent overlay, controlled via a left blank area to toggle settings/editing/resizing.
+One‑liner: A WPF utility that shows text on a topmost transparent overlay, controlled via a left blank area to toggle Adjust Mode/editing/resizing.
 
 ## 개요 / Overview
-- 오버레이 텍스트를 표시하는 경량 WPF 앱입니다. 평상시에는 텍스트만 보이고, 좌측의 얇은 빈영역을 클릭하면 설정상태로 전환되어 편집/리사이즈/설정 버튼을 사용할 수 있습니다.
-- A lightweight WPF app for overlaying text. In normal mode only the text shows; clicking the thin left blank area toggles a settings state for editing/resizing/opening settings.
+- 오버레이 텍스트를 표시하는 경량 WPF 앱입니다. 평상시에는 텍스트만 보이고, 좌측의 얇은 빈영역을 클릭하면 조정모드로 전환되어 편집/리사이즈/설정 버튼을 사용할 수 있습니다.
+- A lightweight WPF app for overlaying text. In normal mode only the text shows; clicking the thin left blank area toggles Adjust Mode for editing/resizing/opening settings.
 
 ## 특징 / Features
 - 항상 위(Topmost), 테두리 없음(WindowStyle=None), 투명 허용(AllowsTransparency=True)
-- 좌측 빈영역(약 한 글자 폭) 항상 표시, 클릭으로 설정상태 토글
-- 설정상태에서:
+- 좌측 빈영역(약 한 글자 폭) 항상 표시, 클릭으로 조정모드 토글
+- 조정모드에서:
   - 오버레이 위치에서 바로 텍스트 편집
   - 창 테두리(상/하/좌/우) 드래그로 리사이즈, 보더/핸들 표시
   - 빈영역 왼쪽의 세로 툴바에 버튼 배치: 닫기(X), 설정
-- 툴바 영역은 고정 폭(예: 56px)으로 항상 예약되어 설정상태 전환 시 레이아웃이 밀리지 않음
+- 툴바 영역은 고정 폭(예: 56px)으로 항상 예약되어 조정모드 전환 시 레이아웃이 밀리지 않음
 - 오버레이 배경은 약 10% 투명(기본 #1A000000), ARGB로 변경 가능
 - 설정(배경색/투명도, 폰트)과 오버레이 텍스트는 앱 재실행 시에도 유지
 - 창 위치(Left/Top)와 창 크기(Width/Height)도 다음 실행 시 복원하며, 디스플레이 변경 시 화면 안쪽으로 자동 보정/클램프
 
 In English:
 - Topmost, borderless, with transparency enabled
-- A thin blank area on the left (about one character wide), click to toggle settings state
-- In settings state:
+- A thin blank area on the left (about one character wide), click to toggle Adjust Mode
+- In Adjust Mode:
   - Inline text editing directly on the overlay
   - Resize by dragging window edges with visible border/handles
   - Vertical toolbar to the left of the blank area: Close (X), Settings
-- The toolbar area uses a fixed reserved width (e.g., 56px) so the layout does not shift when toggling settings state
+- The toolbar area uses a fixed reserved width (e.g., 56px) so the layout does not shift when toggling Adjust Mode
 - Overlay background ~10% opacity (default #1A000000), configurable via ARGB
 - Settings (background/opacity, font) and overlay text persist across restarts
 - Window position (Left/Top) and size (Width/Height) also persist; clamped to visible area if display configuration changes
 
 ## 조작 / Controls
-- 좌측 빈영역 클릭(마우스 버튼 업 시점): 설정상태 토글 (편집/툴바/리사이즈 보더 표시/숨김)
+- 좌측 빈영역 클릭(마우스 버튼 업 시점): 조정모드 토글 (편집/툴바/리사이즈 보더 표시/숨김)
 - 초기 상태에서 좌측 빈영역 드래그: 창 위치 이동
 - 설정 버튼: 설정 창 열기 (색상 선택 UI, 투명도 슬라이더, 글꼴/크기)
 - 닫기(X) 버튼: 앱 종료
-- 설정상태에서 테두리 드래그: 창 크기 조절
+- 조정모드에서 테두리 드래그: 창 크기 조절
 
 Controls in English:
-- Click left blank area (on mouse button up): toggle settings state (edit/toolbar/resize borders)
+- Click left blank area (on mouse button up): toggle Adjust Mode (edit/toolbar/resize borders)
 - Drag left blank area in normal state: move the window
 - Settings button: open Settings window (color picker, opacity slider, font family/size)
 - Close (X) button: quit the app
-- Drag window edges in settings state: resize the window
+- Drag window edges in Adjust Mode: resize the window
 
 ## 설정 / Settings
 - 설정 창에서 ‘색상 선택’ UI로 배경 색상을 고르고, 투명도는 슬라이더(0–100%)로 조정합니다. 시스템 글꼴과 폰트 크기 선택 가능, 미리보기 제공

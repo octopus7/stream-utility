@@ -1,6 +1,7 @@
 using System;
 using System.Windows;
 using System.Windows.Input;
+ 
 
 namespace YtCaption.Wpf;
 
@@ -29,7 +30,9 @@ public partial class MainWindow : Window
         this.MouseLeftButtonUp += Window_OnMouseLeftButtonUp;
         this.Loaded += MainWindow_Loaded;
         this.Closing += MainWindow_Closing;
+        
     }
+    
 
     private void MainWindow_Loaded(object sender, RoutedEventArgs e)
     {
@@ -75,7 +78,7 @@ public partial class MainWindow : Window
     private void LeftHandle_OnMouseMove(object sender, System.Windows.Input.MouseEventArgs e)
     {
         if (!_leftHandlePressed) return;
-        if (_isEditMode) return; // 설정상태에서는 드래그로 이동하지 않음
+        if (_isEditMode) return; // 조정모드에서는 드래그로 이동하지 않음
         if (e.LeftButton != System.Windows.Input.MouseButtonState.Pressed) return;
 
         var p = e.GetPosition(this);

@@ -19,18 +19,18 @@
 - 오버레이 왼쪽에는 한 글자 정도 폭의 ‘빈영역’을 항상 표시합니다.
 - A narrow “blank area” about one character wide is always visible on the left side of the overlay.
 
-## 설정상태 / Settings State
-- 좌측 빈영역을 마우스 버튼 업 시점에 클릭으로 인식하여 ‘설정상태’를 전환/해제합니다.
-- The “settings state” toggles on mouse button up when clicking the left blank area.
+## 조정모드 / Adjust Mode
+- 좌측 빈영역을 마우스 버튼 업 시점에 클릭으로 인식하여 ‘조정모드’를 전환/해제합니다.
+- Adjust Mode toggles on mouse button up when clicking the left blank area.
 
-- 초기(설정상태 아님)에서 좌측 빈영역을 드래그하면 창 위치 이동이 됩니다(클릭이 아닌 드래그 시 토글되지 않음).
-- In normal (non-settings) state, dragging the left blank area moves the window (dragging does not toggle the state).
+- 초기(조정모드 아님)에서 좌측 빈영역을 드래그하면 창 위치 이동이 됩니다(클릭이 아닌 드래그 시 토글되지 않음).
+- In normal (non-adjust) state, dragging the left blank area moves the window (dragging does not toggle the mode).
 
-- 설정상태 버튼(세로 툴바)은 좌측에 고정 폭(예: 56px)을 항상 예약하여 레이아웃이 밀리지 않도록 합니다. 설정상태가 아닐 때도 공간이 확보되어 오버레이가 흔들리지 않습니다.
-- The vertical toolbar area on the left uses a fixed width (e.g., 56px) reserved at all times to prevent layout shift; the overlay does not move when entering/exiting settings state.
+- 조정모드 버튼(세로 툴바)은 좌측에 고정 폭(예: 56px)을 항상 예약하여 레이아웃이 밀리지 않도록 합니다. 조정모드가 아닐 때도 공간이 확보되어 오버레이가 흔들리지 않습니다.
+- The vertical toolbar area on the left uses a fixed width (e.g., 56px) reserved at all times to prevent layout shift; the overlay does not move when entering/exiting Adjust Mode.
 
-- 설정상태에서는 다음이 표시됩니다: (1) 텍스트 편집 가능 상태(오버레이 위치에서 바로 편집), (2) 창 리사이즈 보더/핸들(상/하/좌/우 드래그로 크기 조정), (3) 좌측 빈영역의 왼쪽에 세로 툴바.
-- In settings state, the following appear: (1) inline text editing at the overlay location, (2) resize border/handles to drag on all four edges, and (3) a vertical toolbar to the left of the blank area.
+- 조정모드에서는 다음이 표시됩니다: (1) 텍스트 편집 가능 상태(오버레이 위치에서 바로 편집), (2) 창 리사이즈 보더/핸들(상/하/좌/우 드래그로 크기 조정), (3) 좌측 빈영역의 왼쪽에 세로 툴바.
+- In Adjust Mode, the following appear: (1) inline text editing at the overlay location, (2) resize border/handles to drag on all four edges, and (3) a vertical toolbar to the left of the blank area.
 
 - 세로 툴바 버튼 배치는 위에서 아래로 ‘닫기(X) 버튼’, ‘설정 버튼’ 순서입니다.
 - The vertical toolbar buttons are ordered from top to bottom: Close (X) button, then Settings button.
