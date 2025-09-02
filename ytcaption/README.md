@@ -67,6 +67,21 @@ Requirements and commands in English:
 - CLI: `dotnet build YtCaption.Wpf/YtCaption.Wpf.csproj -c Release`, run the generated EXE above
 - Visual Studio: open the `.csproj`, set as startup project, run
 
+## 배포 방법 / Distribution
+- 선택: Self-contained 단일 파일(SCD Single-File) ZIP 배포.
+- 퍼블리시(Windows x64):
+  - `dotnet publish YtCaption.Wpf -c Release -r win-x64 --self-contained true -p:PublishSingleFile=true -p:PublishReadyToRun=true -p:PublishTrimmed=false -p:DebugType=None -p:DebugSymbols=false`
+- 산출물: `YtCaption.Wpf/bin/Release/net8.0-windows/win-x64/publish/YtCaption.Wpf.exe`
+- ZIP 패키징: 실행 파일과 `dist/README.txt`를 묶어 `ytcaption-v<semver>-win-x64-scd-single.zip` 생성.
+- 자동화: `scripts/release.ps1 -Version 0.1.0` 실행 시 퍼블리시+ZIP 생성.
+
+In English:
+- Choice: Self-contained single-file (SCD) ZIP.
+- Publish (Windows x64): `dotnet publish ... --self-contained true -p:PublishSingleFile=true`
+- Output: single EXE under `.../publish/`.
+- Package: zip the EXE with `dist/README.txt` as `ytcaption-v<semver>-win-x64-scd-single.zip`.
+- Automation: run `scripts/release.ps1 -Version 0.1.0`.
+
 ## 주요 파일 / Key Files
 - `YtCaption.Wpf/App.xaml` · 리소스(`OverlayBackgroundColor`, `OverlayBackgroundBrush`)
 - `YtCaption.Wpf/MainWindow.xaml(.cs)` · 오버레이/빈영역/툴바/편집/리사이즈 로직
@@ -78,3 +93,13 @@ Requirements and commands in English:
 ## 참고 / Notes
 - 오버레이 배경색은 설정 창에서 변경하거나 `App.xaml` 리소스(ARGB)로 초기값을 조정할 수 있습니다.
 - Overlay background can be changed in the Settings window or by editing the ARGB resource in `App.xaml`.
+
+## 변경 기록 / Change Log
+- 2025-09-02
+  - 초기 공개: 오버레이 텍스트, 좌측 빈영역 기반 조정모드 토글, 인라인 편집, 수동 리사이즈 핸들, 설정 창(색상/투명도/폰트), 설정·텍스트·창 위치/크기 영속화(`%AppData%/YtCaption.Wpf/settings.json`), DPI 안정화된 리사이즈 반영.
+  - 문서: `AGENTS.md` 추가(기여 가이드·문서/응답 정책), `Instructions.md`에 문서 정책(한국어 응답, 한/영 병기) 병기, 본 `README.md`에 변경 기록 섹션 생성.
+
+In English:
+- 2025-09-02
+  - Initial release: overlay text, left blank-area Adjust Mode toggle, inline editing, manual resize handles, Settings window (color/opacity/font), persistence of settings/text/window bounds (`%AppData%/YtCaption.Wpf/settings.json`), DPI-stable resize.
+  - Docs: added `AGENTS.md` (contributor guide + doc/response policy), appended documentation policy to `Instructions.md`, created this Change Log section in `README.md`.
