@@ -42,6 +42,9 @@
 - 설정 버튼을 누르면 별도의 설정 창이 열립니다.
 - Pressing the Settings button opens a separate Settings window.
 
+- 메인 창의 설정 버튼은 텍스트 대신 톱니바퀴 아이콘(이모지)을 사용합니다.
+- The Settings button in the main window uses a gear icon (emoji) instead of text.
+
 - 설정 창에서는 컬러 선택 UI로 색상을 고르고, 투명도는 슬라이더(0–100%)로 조정합니다. 또한 폰트 패밀리와 폰트 크기를 설정할 수 있습니다.
 - In the Settings window, choose color via a color picker UI and adjust opacity with a slider (0–100%). You can also set font family and font size.
 

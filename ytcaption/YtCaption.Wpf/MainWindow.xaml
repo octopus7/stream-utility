@@ -37,8 +37,10 @@
                     FontWeight="Bold"
                     Click="ExitButton_OnClick"/>
             <Button x:Name="SettingsButton"
-                    Content="설정"
+                    Content="⚙"
+                    ToolTip="설정"
                     Width="48" Height="28"
+                    FontSize="18"
                     Background="#424242"
                     Foreground="White"
                     Click="SettingsButton_OnClick"/>

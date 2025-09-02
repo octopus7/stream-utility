@@ -45,6 +45,8 @@ Controls in English:
 - Click left blank area (on mouse button up): toggle Adjust Mode (edit/toolbar/resize borders)
 - Drag left blank area in normal state: move the window
 - Settings button: open Settings window (color picker, opacity slider, font family/size)
+  - 표시: 텍스트 대신 톱니바퀴(⚙) 아이콘
+  - Display: gear (⚙) icon instead of text
 - Close (X) button: quit the app
 - Drag window edges in Adjust Mode: resize the window
 
