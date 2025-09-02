@@ -13,6 +13,7 @@ public partial class MainWindow : Window
     private bool _isResizing;
     private ResizeEdge _currentEdge = ResizeEdge.None;
     private System.Windows.Point _startMouse;
+    private System.Windows.Point _startMouseScreen;
     private double _startLeft, _startTop, _startWidth, _startHeight;
     // Left handle interaction state
     private bool _leftHandlePressed;
@@ -162,6 +163,7 @@ public partial class MainWindow : Window
             if (_isResizing)
             {
                 _startMouse = e.GetPosition(this);
+                _startMouseScreen = this.PointToScreen(_startMouse);
                 _startLeft = this.Left;
                 _startTop = this.Top;
                 _startWidth = this.Width;
@@ -175,9 +177,13 @@ public partial class MainWindow : Window
     private void Window_OnMouseMove(object? sender, System.Windows.Input.MouseEventArgs e)
     {
         if (!_isResizing) return;
-        var p = e.GetPosition(this);
-        var dx = p.X - _startMouse.X;
-        var dy = p.Y - _startMouse.Y;
+        // 화면 좌표 기반 델타 (DPI 보정 포함)로 계산해 요동 방지
+        var currentScreen = this.PointToScreen(e.GetPosition(this));
+        var dxPx = currentScreen.X - _startMouseScreen.X;
+        var dyPx = currentScreen.Y - _startMouseScreen.Y;
+        var dpi = System.Windows.Media.VisualTreeHelper.GetDpi(this);
+        var dx = dxPx / dpi.DpiScaleX;
+        var dy = dyPx / dpi.DpiScaleY;
 
         switch (_currentEdge)
         {

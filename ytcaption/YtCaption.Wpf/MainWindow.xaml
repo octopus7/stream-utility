@@ -11,8 +11,9 @@
         WindowStyle="None"
         Background="Transparent"
         Height="300" Width="800"
+        UseLayoutRounding="True"
         MinWidth="200" MinHeight="100">
-    <Grid>
+    <Grid SnapsToDevicePixels="True">
         <Grid.ColumnDefinitions>
             <!-- 좌측 툴바 고정 폭(레이아웃 밀림 방지) -->
             <ColumnDefinition Width="56"/>
