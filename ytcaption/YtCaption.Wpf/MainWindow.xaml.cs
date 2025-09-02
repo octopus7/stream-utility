@@ -51,9 +51,45 @@ public partial class MainWindow : Window
 
     private void ApplySettingsToUi(Models.AppSettings s)
     {
-        // 배경 브러시 업데이트
-        var c = (System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString(s.OverlayColor);
-        System.Windows.Application.Current.Resources["OverlayBackgroundBrush"] = new System.Windows.Media.SolidColorBrush(c);
+        // 오버레이 배경 업데이트 (리소스 컬러 갱신 + 브러시 인스턴스/즉시 반영)
+        try
+        {
+            var c = (System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString(
+                string.IsNullOrWhiteSpace(s.OverlayColor) ? "#1A000000" : s.OverlayColor);
+            System.Windows.Application.Current.Resources["OverlayBackgroundColor"] = c;
+            if (TryFindResource("OverlayBackgroundBrush") is System.Windows.Media.SolidColorBrush ob)
+            {
+                ob.Color = c;
+                OverlayArea.Background = ob; // 즉시 반영
+            }
+            else
+            {
+                var newBrush = new System.Windows.Media.SolidColorBrush(c);
+                System.Windows.Application.Current.Resources["OverlayBackgroundBrush"] = newBrush;
+                OverlayArea.Background = newBrush;
+            }
+        }
+        catch { }
+
+        // 좌측 빈영역(LeftHandle) 배경 업데이트 (리소스 컬러 갱신 + 브러시 인스턴스/즉시 반영)
+        try
+        {
+            var lc = (System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString(
+                string.IsNullOrWhiteSpace(s.LeftHandleColor) ? "#22FFFFFF" : s.LeftHandleColor);
+            System.Windows.Application.Current.Resources["LeftHandleBackgroundColor"] = lc;
+            if (TryFindResource("LeftHandleBackgroundBrush") is System.Windows.Media.SolidColorBrush lb)
+            {
+                lb.Color = lc;
+                LeftHandle.Background = lb; // 즉시 반영
+            }
+            else
+            {
+                var newLeftBrush = new System.Windows.Media.SolidColorBrush(lc);
+                System.Windows.Application.Current.Resources["LeftHandleBackgroundBrush"] = newLeftBrush;
+                LeftHandle.Background = newLeftBrush;
+            }
+        }
+        catch { }
 
         // 폰트 적용
         try

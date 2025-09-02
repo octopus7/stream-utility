@@ -45,9 +45,15 @@
 - 설정 창에서는 컬러 선택 UI로 색상을 고르고, 투명도는 슬라이더(0–100%)로 조정합니다. 또한 폰트 패밀리와 폰트 크기를 설정할 수 있습니다.
 - In the Settings window, choose color via a color picker UI and adjust opacity with a slider (0–100%). You can also set font family and font size.
 
+- 좌측 빈영역(LeftHandle) 배경 색상 및 투명도도 오버레이 배경과 동일한 방식으로 설정할 수 있습니다.
+- The left blank area (LeftHandle) background color and opacity can also be configured in the same way as the overlay background.
+
 ## 지속성 / Persistence
 - 변경한 설정(오버레이 배경색/투명도, 폰트 설정)은 앱을 종료해도 유지되어야 합니다. 오버레이에 입력된 텍스트도 재실행 시 복원되어야 합니다.
 - Updated settings (overlay background color/opacity, font settings) must persist across app restarts. The overlay text must also be restored on relaunch.
+
+- 좌측 빈영역 배경색/투명도 설정도 재실행 시 동일하게 복원되어야 합니다.
+- The left blank area background color/opacity settings must also persist across restarts.
 
 - 창 위치(Left/Top)도 저장하여 다음 실행 시 복원합니다. 화면 구성이 바뀐 경우에는 가시 영역 안으로 자동 보정합니다.
 - Window position (Left/Top) is persisted and restored on next launch. If display configuration changes, the position is clamped inside the visible area.

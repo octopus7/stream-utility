@@ -7,5 +7,9 @@
         <!-- 오버레이 배경 색상 (AARRGGBB). 기본: 10% 검정 (#1A000000) -->
         <Color x:Key="OverlayBackgroundColor">#1A000000</Color>
         <SolidColorBrush x:Key="OverlayBackgroundBrush" Color="{DynamicResource OverlayBackgroundColor}"/>
+
+        <!-- 좌측 빈영역(LeftHandle) 배경 색상 (AARRGGBB). 기본: 옅은 흰색 (#22FFFFFF) -->
+        <Color x:Key="LeftHandleBackgroundColor">#22FFFFFF</Color>
+        <SolidColorBrush x:Key="LeftHandleBackgroundBrush" Color="{DynamicResource LeftHandleBackgroundColor}"/>
     </Application.Resources>
 </Application>

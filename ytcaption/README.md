@@ -17,6 +17,7 @@ One‑liner: A WPF utility that shows text on a topmost transparent overlay, con
   - 빈영역 왼쪽의 세로 툴바에 버튼 배치: 닫기(X), 설정
 - 툴바 영역은 고정 폭(예: 56px)으로 항상 예약되어 조정모드 전환 시 레이아웃이 밀리지 않음
 - 오버레이 배경은 약 10% 투명(기본 #1A000000), ARGB로 변경 가능
+- 좌측 빈영역 배경 색상/투명도도 설정 가능(기본 #22FFFFFF)
 - 설정(배경색/투명도, 폰트)과 오버레이 텍스트는 앱 재실행 시에도 유지
 - 창 위치(Left/Top)와 창 크기(Width/Height)도 다음 실행 시 복원하며, 디스플레이 변경 시 화면 안쪽으로 자동 보정/클램프
 
@@ -29,6 +30,7 @@ In English:
   - Vertical toolbar to the left of the blank area: Close (X), Settings
 - The toolbar area uses a fixed reserved width (e.g., 56px) so the layout does not shift when toggling Adjust Mode
 - Overlay background ~10% opacity (default #1A000000), configurable via ARGB
+- Left blank area background color/opacity is configurable as well (default #22FFFFFF)
 - Settings (background/opacity, font) and overlay text persist across restarts
 - Window position (Left/Top) and size (Width/Height) also persist; clamped to visible area if display configuration changes
 
@@ -47,11 +49,11 @@ Controls in English:
 - Drag window edges in Adjust Mode: resize the window
 
 ## 설정 / Settings
-- 설정 창에서 ‘색상 선택’ UI로 배경 색상을 고르고, 투명도는 슬라이더(0–100%)로 조정합니다. 시스템 글꼴과 폰트 크기 선택 가능, 미리보기 제공
+- 설정 창에서 ‘색상 선택’ UI로 오버레이/좌측 빈영역 배경 색상을 고르고, 투명도는 슬라이더(0–100%)로 각각 조정합니다. 시스템 글꼴과 폰트 크기 선택 가능, 미리보기 제공
 - 설정 및 텍스트 저장 위치: `%AppData%/YtCaption.Wpf/settings.json`
 
 In English:
-- Use a color picker UI for background color and a slider (0–100%) for opacity; choose system font and size with live preview
+- Use a color picker UI to configure overlay/left-blank-area background colors and per-area opacity (0–100%); choose system font and size with live preview
 - Settings and text are stored at `%AppData%/YtCaption.Wpf/settings.json`
 
 ## 빌드 및 실행 / Build & Run
@@ -98,8 +100,10 @@ In English:
 - 2025-09-02
   - 초기 공개: 오버레이 텍스트, 좌측 빈영역 기반 조정모드 토글, 인라인 편집, 수동 리사이즈 핸들, 설정 창(색상/투명도/폰트), 설정·텍스트·창 위치/크기 영속화(`%AppData%/YtCaption.Wpf/settings.json`), DPI 안정화된 리사이즈 반영.
   - 문서: `AGENTS.md` 추가(기여 가이드·문서/응답 정책), `Instructions.md`에 문서 정책(한국어 응답, 한/영 병기) 병기, 본 `README.md`에 변경 기록 섹션 생성.
+  - 기능: 좌측 빈영역 배경 색상/투명도 설정 추가 및 영속화. 리소스/바인딩으로 오버레이와 동일 방식 적용.
 
 In English:
 - 2025-09-02
   - Initial release: overlay text, left blank-area Adjust Mode toggle, inline editing, manual resize handles, Settings window (color/opacity/font), persistence of settings/text/window bounds (`%AppData%/YtCaption.Wpf/settings.json`), DPI-stable resize.
   - Docs: added `AGENTS.md` (contributor guide + doc/response policy), appended documentation policy to `Instructions.md`, created this Change Log section in `README.md`.
+  - Feature: added left blank-area background color/opacity settings with persistence, applied via resource/binding same as overlay.

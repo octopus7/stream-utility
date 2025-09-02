@@ -47,7 +47,7 @@
         <!-- 좌측 빈영역: 클릭 시 편집 토글 + 종료 버튼 표시 -->
         <Border x:Name="LeftHandle"
                 Grid.Column="1"
-                Background="#22FFFFFF"
+                Background="{DynamicResource LeftHandleBackgroundBrush}"
                 MouseLeftButtonDown="LeftHandle_OnMouseLeftButtonDown"
                 MouseLeftButtonUp="LeftHandle_OnMouseLeftButtonUp"
                 MouseMove="LeftHandle_OnMouseMove"/>
