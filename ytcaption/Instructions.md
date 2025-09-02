@@ -61,3 +61,13 @@
 
 - 상단 오버레이 더블클릭으로 리사이즈 모드 토글 요구도 이후 ‘좌측 빈영역 클릭’으로 통합되어 대체되었습니다.
 - The instruction to toggle resize mode by double-clicking the overlay was later superseded by using “left blank area click” instead.
+
+## 문서 정책 / Documentation Policy
+- 모든 응답은 한국어로 제공합니다.
+- All responses are in Korean.
+
+- 새로운 지시는 이 파일에 한국어/영어 병기로 추가하고, 기존 형식을 따릅니다.
+- New instructions are added to this file in both Korean and English, following the existing format.
+
+- 구현 내용과 변경 사항은 `README.md`에 요약하여 지속적으로 기록합니다.
+- Implemented features and changes are continuously summarized in `README.md`.
