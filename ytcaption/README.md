@@ -1,0 +1,78 @@
+# YT Caption Utility (WPF)
+
+한 줄로 요약: 항상 위에 떠 있는 투명 오버레이에 텍스트를 표시하고, 좌측 빈영역 클릭으로 설정/편집/리사이즈를 제어하는 WPF 유틸리티.
+
+One‑liner: A WPF utility that shows text on a topmost transparent overlay, controlled via a left blank area to toggle settings/editing/resizing.
+
+## 개요 / Overview
+- 오버레이 텍스트를 표시하는 경량 WPF 앱입니다. 평상시에는 텍스트만 보이고, 좌측의 얇은 빈영역을 클릭하면 설정상태로 전환되어 편집/리사이즈/설정 버튼을 사용할 수 있습니다.
+- A lightweight WPF app for overlaying text. In normal mode only the text shows; clicking the thin left blank area toggles a settings state for editing/resizing/opening settings.
+
+## 특징 / Features
+- 항상 위(Topmost), 테두리 없음(WindowStyle=None), 투명 허용(AllowsTransparency=True)
+- 좌측 빈영역(약 한 글자 폭) 항상 표시, 클릭으로 설정상태 토글
+- 설정상태에서:
+  - 오버레이 위치에서 바로 텍스트 편집
+  - 창 테두리(상/하/좌/우) 드래그로 리사이즈, 보더/핸들 표시
+  - 빈영역 왼쪽의 세로 툴바에 버튼 배치: 닫기(X), 설정
+- 툴바 영역은 고정 폭(예: 56px)으로 항상 예약되어 설정상태 전환 시 레이아웃이 밀리지 않음
+- 오버레이 배경은 약 10% 투명(기본 #1A000000), ARGB로 변경 가능
+- 설정(배경색/투명도, 폰트)과 오버레이 텍스트는 앱 재실행 시에도 유지
+
+In English:
+- Topmost, borderless, with transparency enabled
+- A thin blank area on the left (about one character wide), click to toggle settings state
+- In settings state:
+  - Inline text editing directly on the overlay
+  - Resize by dragging window edges with visible border/handles
+  - Vertical toolbar to the left of the blank area: Close (X), Settings
+- The toolbar area uses a fixed reserved width (e.g., 56px) so the layout does not shift when toggling settings state
+- Overlay background ~10% opacity (default #1A000000), configurable via ARGB
+- Settings (background/opacity, font) and overlay text persist across restarts
+
+## 조작 / Controls
+- 좌측 빈영역 클릭(마우스 버튼 업 시점): 설정상태 토글 (편집/툴바/리사이즈 보더 표시/숨김)
+- 초기 상태에서 좌측 빈영역 드래그: 창 위치 이동
+- 설정 버튼: 설정 창 열기 (색상 선택 UI, 투명도 슬라이더, 글꼴/크기)
+- 닫기(X) 버튼: 앱 종료
+- 설정상태에서 테두리 드래그: 창 크기 조절
+
+Controls in English:
+- Click left blank area (on mouse button up): toggle settings state (edit/toolbar/resize borders)
+- Drag left blank area in normal state: move the window
+- Settings button: open Settings window (color picker, opacity slider, font family/size)
+- Close (X) button: quit the app
+- Drag window edges in settings state: resize the window
+
+## 설정 / Settings
+- 설정 창에서 ‘색상 선택’ UI로 배경 색상을 고르고, 투명도는 슬라이더(0–100%)로 조정합니다. 시스템 글꼴과 폰트 크기 선택 가능, 미리보기 제공
+- 설정 및 텍스트 저장 위치: `%AppData%/YtCaption.Wpf/settings.json`
+
+In English:
+- Use a color picker UI for background color and a slider (0–100%) for opacity; choose system font and size with live preview
+- Settings and text are stored at `%AppData%/YtCaption.Wpf/settings.json`
+
+## 빌드 및 실행 / Build & Run
+- 필요: .NET 8 SDK (실행만 할 경우 .NET 8 Windows Desktop Runtime)
+- CLI:
+  - `dotnet build YtCaption.Wpf/YtCaption.Wpf.csproj -c Release`
+  - 실행 파일: `YtCaption.Wpf/bin/Release/net8.0-windows/YtCaption.Wpf.exe`
+- Visual Studio:
+  - `YtCaption.Wpf/YtCaption.Wpf.csproj` 열기 → 시작 프로젝트로 설정 → 실행
+
+Requirements and commands in English:
+- Requires .NET 8 SDK (Desktop Runtime for running only)
+- CLI: `dotnet build YtCaption.Wpf/YtCaption.Wpf.csproj -c Release`, run the generated EXE above
+- Visual Studio: open the `.csproj`, set as startup project, run
+
+## 주요 파일 / Key Files
+- `YtCaption.Wpf/App.xaml` · 리소스(`OverlayBackgroundColor`, `OverlayBackgroundBrush`)
+- `YtCaption.Wpf/MainWindow.xaml(.cs)` · 오버레이/빈영역/툴바/편집/리사이즈 로직
+- `YtCaption.Wpf/SettingsWindow.xaml(.cs)` · ARGB·폰트 설정 및 미리보기
+- `YtCaption.Wpf/Models/AppSettings.cs` · 설정 모델
+- `YtCaption.Wpf/Services/SettingsStore.cs` · 설정 로드/저장(JSON, `%AppData%`)
+- `Instructions.md` · 요구사항(한국어/영어 병기)
+
+## 참고 / Notes
+- 오버레이 배경색은 설정 창에서 변경하거나 `App.xaml` 리소스(ARGB)로 초기값을 조정할 수 있습니다.
+- Overlay background can be changed in the Settings window or by editing the ARGB resource in `App.xaml`.

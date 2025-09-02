@@ -1,0 +1,11 @@
+<Application x:Class="YtCaption.Wpf.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:YtCaption.Wpf"
+             StartupUri="MainWindow.xaml">
+    <Application.Resources>
+        <!-- 오버레이 배경 색상 (AARRGGBB). 기본: 10% 검정 (#1A000000) -->
+        <Color x:Key="OverlayBackgroundColor">#1A000000</Color>
+        <SolidColorBrush x:Key="OverlayBackgroundBrush" Color="{DynamicResource OverlayBackgroundColor}"/>
+    </Application.Resources>
+</Application>

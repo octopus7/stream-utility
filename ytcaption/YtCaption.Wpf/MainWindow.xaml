@@ -1,0 +1,121 @@
+<Window x:Class="YtCaption.Wpf.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:YtCaption.Wpf"
+        mc:Ignorable="d"
+        Title="YT Caption Utility"
+        Topmost="True"
+        AllowsTransparency="True"
+        WindowStyle="None"
+        Background="Transparent"
+        Height="300" Width="800"
+        MinWidth="200" MinHeight="100">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <!-- 좌측 툴바 고정 폭(레이아웃 밀림 방지) -->
+            <ColumnDefinition Width="56"/>
+            <!-- 좌측 빈영역: 글자 한 글자 정도 폭 -->
+            <ColumnDefinition Width="18"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <!-- 좌측 툴바: 닫기/설정 버튼 (수직 배치) -->
+        <StackPanel x:Name="ToolbarPanel"
+                    Grid.Column="0"
+                    Orientation="Vertical"
+                    VerticalAlignment="Top"
+                    Margin="4"
+                    Visibility="Collapsed">
+            <Button Content="X"
+                    Width="28" Height="28"
+                    Margin="0,0,0,6"
+                    Background="#D32F2F"
+                    Foreground="White"
+                    FontWeight="Bold"
+                    Click="ExitButton_OnClick"/>
+            <Button x:Name="SettingsButton"
+                    Content="설정"
+                    Width="48" Height="28"
+                    Background="#424242"
+                    Foreground="White"
+                    Click="SettingsButton_OnClick"/>
+        </StackPanel>
+
+        <!-- 좌측 빈영역: 클릭 시 편집 토글 + 종료 버튼 표시 -->
+        <Border x:Name="LeftHandle"
+                Grid.Column="1"
+                Background="#22FFFFFF"
+                MouseLeftButtonDown="LeftHandle_OnMouseLeftButtonDown"
+                MouseLeftButtonUp="LeftHandle_OnMouseLeftButtonUp"
+                MouseMove="LeftHandle_OnMouseMove"/>
+
+        <!-- 투명 오버레이 텍스트 영역 (10% 배경, 나중에 ARGB 리소스로 변경 가능) -->
+        <Grid x:Name="OverlayArea"
+              Grid.Column="2"
+              Background="{DynamicResource OverlayBackgroundBrush}">
+            <!-- 보기용 텍스트 -->
+            <TextBlock x:Name="OverlayText"
+                       Text="{Binding Text, ElementName=EditBox}"
+                       TextWrapping="Wrap"
+                       Foreground="White"
+                       FontSize="24"/>
+            <!-- 편집용 텍스트박스 (오버레이와 동일 위치, 기본 숨김) -->
+            <TextBox x:Name="EditBox"
+                     Visibility="Collapsed"
+                     AcceptsReturn="True"
+                     TextWrapping="Wrap"
+                     Foreground="White"
+                     FontSize="24"
+                     Background="Transparent"
+                     BorderThickness="0"/>
+        </Grid>
+
+        <!-- 리사이즈 모드 시 보더 -->
+        <Border x:Name="ResizeVisual"
+                Grid.ColumnSpan="3"
+                BorderBrush="#FF3D80EE"
+                BorderThickness="2"
+                Visibility="Collapsed"
+                IsHitTestVisible="False"/>
+
+        <!-- 상하좌우 리사이즈 핸들 (리사이즈 모드에서만 표시) -->
+        <Border x:Name="ResizeTop"
+                Grid.ColumnSpan="3"
+                Height="6"
+                VerticalAlignment="Top"
+                Background="#33007ACC"
+                Cursor="SizeNS"
+                Visibility="Collapsed"
+                MouseLeftButtonDown="ResizeHandle_OnMouseLeftButtonDown"
+                Tag="Top"/>
+        <Border x:Name="ResizeBottom"
+                Grid.ColumnSpan="3"
+                Height="6"
+                VerticalAlignment="Bottom"
+                Background="#33007ACC"
+                Cursor="SizeNS"
+                Visibility="Collapsed"
+                MouseLeftButtonDown="ResizeHandle_OnMouseLeftButtonDown"
+                Tag="Bottom"/>
+        <Border x:Name="ResizeLeft"
+                Grid.ColumnSpan="3"
+                Width="6"
+                HorizontalAlignment="Left"
+                Background="#33007ACC"
+                Cursor="SizeWE"
+                Visibility="Collapsed"
+                MouseLeftButtonDown="ResizeHandle_OnMouseLeftButtonDown"
+                Tag="Left"/>
+        <Border x:Name="ResizeRight"
+                Grid.ColumnSpan="3"
+                Width="6"
+                HorizontalAlignment="Right"
+                Background="#33007ACC"
+                Cursor="SizeWE"
+                Visibility="Collapsed"
+                MouseLeftButtonDown="ResizeHandle_OnMouseLeftButtonDown"
+                Tag="Right"/>
+    </Grid>
+</Window>
