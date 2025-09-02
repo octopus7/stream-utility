@@ -6,5 +6,8 @@ public class AppSettings
     public string FontFamily { get; set; } = "Segoe UI";
     public double FontSize { get; set; } = 24;
     public string OverlayText { get; set; } = string.Empty;
+    public double? WindowLeft { get; set; }
+    public double? WindowTop { get; set; }
+    public double? WindowWidth { get; set; }
+    public double? WindowHeight { get; set; }
 }
-

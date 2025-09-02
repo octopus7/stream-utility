@@ -49,6 +49,12 @@
 - 변경한 설정(오버레이 배경색/투명도, 폰트 설정)은 앱을 종료해도 유지되어야 합니다. 오버레이에 입력된 텍스트도 재실행 시 복원되어야 합니다.
 - Updated settings (overlay background color/opacity, font settings) must persist across app restarts. The overlay text must also be restored on relaunch.
 
+- 창 위치(Left/Top)도 저장하여 다음 실행 시 복원합니다. 화면 구성이 바뀐 경우에는 가시 영역 안으로 자동 보정합니다.
+- Window position (Left/Top) is persisted and restored on next launch. If display configuration changes, the position is clamped inside the visible area.
+
+- 창 크기(Width/Height)도 저장·복원하며, 화면 크기를 넘지 않도록 자동으로 클램프됩니다.
+- Window size (Width/Height) is also persisted and restored, and is clamped to fit within the screen.
+
 ## 변경 이력(대체된 지시) / Change History (Superseded)
 - 초기 지시는 하단에 9pt, 2줄 입력창과 상단 투명 오버레이 표시, 입력창 좌측 드래그 핸들, 창 Topmost 등이었으나 이후 요구사항 변경으로 대체되었습니다.
 - The initial request included a 9pt, two-line input box at the bottom, a transparent overlay above, a drag handle left of the input, and Topmost; these were later replaced by updated requirements.

@@ -18,6 +18,7 @@ One‑liner: A WPF utility that shows text on a topmost transparent overlay, con
 - 툴바 영역은 고정 폭(예: 56px)으로 항상 예약되어 설정상태 전환 시 레이아웃이 밀리지 않음
 - 오버레이 배경은 약 10% 투명(기본 #1A000000), ARGB로 변경 가능
 - 설정(배경색/투명도, 폰트)과 오버레이 텍스트는 앱 재실행 시에도 유지
+- 창 위치(Left/Top)와 창 크기(Width/Height)도 다음 실행 시 복원하며, 디스플레이 변경 시 화면 안쪽으로 자동 보정/클램프
 
 In English:
 - Topmost, borderless, with transparency enabled
@@ -29,6 +30,7 @@ In English:
 - The toolbar area uses a fixed reserved width (e.g., 56px) so the layout does not shift when toggling settings state
 - Overlay background ~10% opacity (default #1A000000), configurable via ARGB
 - Settings (background/opacity, font) and overlay text persist across restarts
+- Window position (Left/Top) and size (Width/Height) also persist; clamped to visible area if display configuration changes
 
 ## 조작 / Controls
 - 좌측 빈영역 클릭(마우스 버튼 업 시점): 설정상태 토글 (편집/툴바/리사이즈 보더 표시/숨김)

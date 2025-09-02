@@ -37,6 +37,8 @@ public partial class MainWindow : Window
         ApplySettingsToUi(_settings);
         // 텍스트 복원
         EditBox.Text = _settings.OverlayText ?? string.Empty;
+        // 창 위치/크기 복원
+        ApplyWindowPosition(_settings);
     }
 
     private void MainWindow_Closing(object? sender, System.ComponentModel.CancelEventArgs e)
@@ -125,6 +127,11 @@ public partial class MainWindow : Window
     {
         if (_settings is null) return;
         _settings.OverlayText = EditBox.Text ?? string.Empty;
+        // 창 위치/크기 저장
+        _settings.WindowLeft = this.Left;
+        _settings.WindowTop = this.Top;
+        _settings.WindowWidth = this.Width;
+        _settings.WindowHeight = this.Height;
         Services.SettingsStore.Save(_settings);
     }
 
@@ -251,6 +258,38 @@ public partial class MainWindow : Window
         else
         {
             PersistTextIfNeeded();
+        }
+    }
+
+    private void ApplyWindowPosition(Models.AppSettings s)
+    {
+        var vsLeft = SystemParameters.VirtualScreenLeft;
+        var vsTop = SystemParameters.VirtualScreenTop;
+        var vsRight = vsLeft + SystemParameters.VirtualScreenWidth;
+        var vsBottom = vsTop + SystemParameters.VirtualScreenHeight;
+
+        // 크기 먼저 복원 (없으면 현재값 유지)
+        var targetWidth = s.WindowWidth ?? (this.ActualWidth > 0 ? this.ActualWidth : this.Width);
+        var targetHeight = s.WindowHeight ?? (this.ActualHeight > 0 ? this.ActualHeight : this.Height);
+
+        // 화면 가시 영역 기준으로 크기 클램프
+        targetWidth = Math.Max(this.MinWidth, Math.Min(targetWidth, SystemParameters.VirtualScreenWidth));
+        targetHeight = Math.Max(this.MinHeight, Math.Min(targetHeight, SystemParameters.VirtualScreenHeight));
+
+        this.Width = targetWidth;
+        this.Height = targetHeight;
+
+        // 위치 복원 (둘 다 있는 경우에 한해 적용)
+        if (s.WindowLeft.HasValue && s.WindowTop.HasValue)
+        {
+            var maxLeft = Math.Max(vsLeft, vsRight - targetWidth);
+            var maxTop = Math.Max(vsTop, vsBottom - targetHeight);
+
+            var newLeft = Math.Max(vsLeft, Math.Min(s.WindowLeft.Value, maxLeft));
+            var newTop = Math.Max(vsTop, Math.Min(s.WindowTop.Value, maxTop));
+
+            this.Left = newLeft;
+            this.Top = newTop;
         }
     }
 }
